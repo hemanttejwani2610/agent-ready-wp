@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:isitagentready.com)",
+      "WebFetch(domain:hemanttejwani.com)",
+      "Bash(rm -f '/Users/hemanttejwani/Local Sites/dapro/app/public/wp-content/plugins/agent-ready.zip')",
+      "Read(//Users/hemanttejwani/Local Sites/dapro/app/public/wp-content/plugins/**)",
+      "Bash(zip -r agent-ready.zip agent-ready-wp/ --include agent-ready-wp/agent-ready.php --include 'agent-ready-wp/src/*.php' --include 'agent-ready-wp/src/**/*.php' --include 'agent-ready-wp/assets/*.css' --include 'agent-ready-wp/assets/*.js')",
+      "Bash(zipinfo agent-ready.zip)",
+      "Bash(awk '{print $NF}')",
+      "WebFetch(domain:webmcp.org)",
+      "WebFetch(domain:ucp.dev)",
+      "WebFetch(domain:agenticcommerce.dev)",
+      "WebFetch(domain:developers.cloudflare.com)",
+      "WebFetch(domain:datatracker.ietf.org)",
+      "WebFetch(domain:blog.cloudflare.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(zip -r agent-ready.zip agent-ready-wp/ --exclude \"*.zip\" --exclude \"*/.git/*\" --exclude \"*/node_modules/*\")"
+    ]
+  }
+}
