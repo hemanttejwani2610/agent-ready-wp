@@ -15,7 +15,8 @@
       "WebFetch(domain:datatracker.ietf.org)",
       "WebFetch(domain:blog.cloudflare.com)",
       "WebFetch(domain:github.com)",
-      "Bash(zip -r agent-ready.zip agent-ready-wp/ --exclude \"*.zip\" --exclude \"*/.git/*\" --exclude \"*/node_modules/*\")"
+      "Bash(zip -r agent-ready.zip agent-ready-wp/ --exclude \"*.zip\" --exclude \"*/.git/*\" --exclude \"*/node_modules/*\")",
+      "Bash(zip -r agent-ready-wp.zip agent-ready-wp --exclude \"*.git*\" --exclude \"*node_modules*\" --exclude \"*.DS_Store*\")"
     ]
   }
 }

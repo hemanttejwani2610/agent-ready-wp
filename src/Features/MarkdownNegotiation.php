@@ -51,24 +51,10 @@ class MarkdownNegotiation {
 			return;
 		}
 
-		// Trigger 2: Accept: text/markdown request header → redirect to /index.md equivalent.
+		// Trigger 2: Accept: text/markdown request header → serve current page as markdown directly.
 		$accept = isset( $_SERVER['HTTP_ACCEPT'] ) ? (string) $_SERVER['HTTP_ACCEPT'] : '';
-		if ( $this->accepts_markdown( $accept ) && ! str_ends_with( $_SERVER['REQUEST_URI'] ?? '', '/index.md' ) ) {
-			$path = ltrim( parse_url( $_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH ), '/' );
-			$path = trim( $path, '/' );
-			$redirect_to = home_url( ( $path ? '/' . $path : '' ) . '/index.md' );
-			header( 'Content-Type: text/markdown; charset=UTF-8' );
-			header( 'Vary: Accept' );
-			// Fetch and output the markdown for this path.
-			$response = wp_remote_get( $redirect_to );
-			if ( ! is_wp_error( $response ) ) {
-				$markdown = wp_remote_retrieve_body( $response );
-				$token_estimate = $this->estimate_tokens( $markdown );
-				header( 'x-markdown-tokens: ' . $token_estimate );
-				header( 'Content-Signal: ai-train=yes, search=yes, ai-input=yes' );
-				echo $markdown; // phpcs:ignore WordPress.Security.EscapeOutput
-				exit;
-			}
+		if ( $this->accepts_markdown( $accept ) ) {
+			$this->serve_current_page();
 		}
 	}
 
@@ -196,9 +182,6 @@ class MarkdownNegotiation {
 		$lines[] = '## AI Agent Resources';
 		$lines[] = '';
 		$lines[] = "- [llms.txt]({$home}/llms.txt)";
-		$lines[] = "- [MCP Server Card]({$home}/.well-known/mcp/server-card.json)";
-		$lines[] = "- [Agent Skills]({$home}/.well-known/agent-skills/index.json)";
-		$lines[] = "- [API Summary](" . rest_url( 'agent-ready/v1/summary' ) . ')';
 		$lines[] = "- [Sitemap]({$home}/wp-sitemap.xml)";
 
 		return implode( "\n", $lines );
