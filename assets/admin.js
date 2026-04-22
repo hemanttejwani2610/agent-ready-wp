@@ -11,7 +11,7 @@
     // Confirm before regenerating AI page if it exists.
     $('form').on('submit', function (e) {
       var action = $(this).find('input[name="action"]').val();
-      if (action === 'agent_ready_create_ai_page') {
+      if (action === 'ar_create_ai_page') {
         var btn = $(this).find('[type="submit"]');
         if (btn.text().indexOf('Regenerate') !== -1) {
           if (!window.confirm('This will overwrite the current /ai/ page content. Continue?')) {

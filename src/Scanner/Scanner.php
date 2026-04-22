@@ -67,7 +67,7 @@ class Scanner {
 			'internal_linking'     => $this->check_linking(),
 
 			// Content Accessibility
-			'markdown_negotiation' => $this->check( 'Markdown Negotiation',          (bool) get_option( 'agent_ready_enable_markdown_negotiation', false ), 20, 'Site does not serve Markdown on Accept: text/markdown.',          'Enable Markdown Negotiation in Agent Ready → Markdown.' ),
+			'markdown_negotiation' => $this->check( 'Markdown Negotiation',          (bool) get_option( 'agent_ready_enable_markdown_negotiation', true ),  20, 'Site does not serve Markdown on Accept: text/markdown.',          'Enable Markdown Negotiation in Agent Ready → Markdown.' ),
 
 			// Bot Access Control
 			'robots_rules'         => $this->check( 'AI Bot Rules in robots.txt',    (bool) get_option( 'agent_ready_enable_robots_rules', false ),         15, 'No AI bot allow rules in robots.txt.',                            'Enable AI Robots Rules in Agent Ready → Robots.' ),

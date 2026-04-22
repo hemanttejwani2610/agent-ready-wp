@@ -76,7 +76,6 @@ final class Plugin {
 			'llms_txt_content'            => '',
 			'schema_type'                 => 'auto',
 			'schema_custom_json'          => '',
-			'ai_page_created'             => false,
 		];
 
 		foreach ( $defaults as $key => $value ) {

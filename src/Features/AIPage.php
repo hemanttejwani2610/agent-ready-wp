@@ -30,7 +30,6 @@ class AIPage {
 				return [ 'success' => false, 'message' => $result->get_error_message() ];
 			}
 
-			update_option( 'agent_ready_ai_page_created', true );
 			return [ 'success' => true, 'page_id' => $existing->ID, 'url' => get_permalink( $existing->ID ), 'message' => 'AI page updated.' ];
 		}
 
@@ -47,17 +46,7 @@ class AIPage {
 			return [ 'success' => false, 'message' => $page_id->get_error_message() ];
 		}
 
-		update_option( 'agent_ready_ai_page_created', true );
 		return [ 'success' => true, 'page_id' => $page_id, 'url' => get_permalink( $page_id ), 'message' => 'AI page created at /ai/.' ];
-	}
-
-	public function delete(): bool {
-		$page = get_page_by_path( 'ai' );
-		if ( $page ) {
-			wp_delete_post( $page->ID, true );
-		}
-		update_option( 'agent_ready_ai_page_created', false );
-		return (bool) $page;
 	}
 
 	private function generate_content(): string {

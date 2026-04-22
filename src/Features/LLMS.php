@@ -82,15 +82,6 @@ class LLMS {
 			$lines[] = '';
 		}
 
-		$caps = (array) get_option( 'agent_ready_capabilities_list', [] );
-		if ( $caps ) {
-			$lines[] = '## Capabilities';
-			foreach ( $caps as $cap ) {
-				$lines[] = '- ' . sanitize_text_field( $cap );
-			}
-			$lines[] = '';
-		}
-
 		$lines[] = "- Sitemap: {$home}/wp-sitemap.xml";
 		$lines[] = '';
 		$lines[] = '---';
